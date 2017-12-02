@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- end meta -->
+
+    <!-- title -->
+    <title>Web REST requester</title>
+    <!-- end title -->
+
+    <!-- external javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- end external javascript -->
+
+    <!-- internal javascript -->
+    <script type="text/javascript" src="js/requester.js"></script>
+    <!-- end internal javascript -->
+  </head>
+
+  <body>
+    <form id="request-form">
+      Method:<br>
+      <select name="method">
+        <option value="get">GET</option>
+        <option value="post">POST</option>
+        <option value="put">PUT</option>
+        <option value="patch">PATCH</option>
+        <option value="delete">DELETE</option>
+      </select>
+      <br>
+      URL:<br>
+      <input type="text" name="url" value="http://0.0.0.0:3000/">
+      <br>
+      Authorizarion:<br>
+      <input type="text" name="authorization">
+      <br><br>
+      <input type="submit" value="Send">
+    </form>
+  </body>
+
+</html>
