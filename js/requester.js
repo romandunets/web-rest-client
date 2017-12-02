@@ -6,7 +6,7 @@ $(document).ready(function() {
     var requestForm = $('#request-form');
     var method = requestForm.find('select[name="method"]').val();
     var url = requestForm.find('input[name="url"]').val();
-    var authorization = requestForm.find('input[name="authorization"]').val();
+    var token = requestForm.find('input[name="token"]').val();
 
     console.log('Sending ' + method + ' request to ' + url);
 
@@ -14,7 +14,7 @@ $(document).ready(function() {
         type: method,
         url: url,
         headers: {
-          'Authorization': authorization
+          'x-access-token': token
         }
       })
       .done(function(data) {
