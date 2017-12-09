@@ -28,11 +28,11 @@ $(document).ready(function() {
         dataType: dataType,
         headers: headers
       })
-      .done(function(data) {
-        console.log('Response: ' + data);
+      .done(function(response) {
+        $("#response").text(JSON.stringify(response));
       })
       .fail(function(jqXHR, textStatus) {
-        console.log('Error: ' + textStatus);
+        $("#response").text('Error: ' + textStatus);
       });
   });
 
