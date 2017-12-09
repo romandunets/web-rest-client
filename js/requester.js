@@ -7,18 +7,25 @@ $(document).ready(function() {
     var method = requestForm.find('select[name="method"]').val();
     var url = requestForm.find('input[name="url"]').val();
     var data = requestForm.find('textarea[name="data"]').val();
-    var token = requestForm.find('input[name="token"]').val();
+    var jsonData = data !== "" ? $.parseJSON(data) : {};
+
+    var headers = {};
+    for (var i = 1; i <= 5; i++) {
+      var headerName = requestForm.find('input[name="header-name-' + i + '"]').val();
+      var headerValue = requestForm.find('input[name="header-value-' + i + '"]').val();
+      if (headerName !== "" && headerValue !== "") {
+        headers[headerName] = headerValue;
+      }
+    }
 
     console.log('Sending ' + method + ' request to ' + url);
 
     $.ajax({
         type: method,
         url: url,
-        data: $.parseJSON(data),
+        data: jsonData,
         dataType: "json",
-        headers: {
-          'x-access-token': token
-        }
+        headers: headers
       })
       .done(function(data) {
         console.log('Response: ' + data);
