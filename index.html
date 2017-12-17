@@ -13,50 +13,105 @@
 
     <!-- external javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- end external javascript -->
 
     <!-- internal javascript -->
     <script type="text/javascript" src="js/requester.js"></script>
     <!-- end internal javascript -->
+
+    <!-- external stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- end external stylesheets -->
+
+    <!-- internal stylesheets -->
+    <link href="css/common.css" rel="stylesheet">
+    <!-- end internal stylesheets -->
   </head>
 
   <body>
-    <form id="request-form">
-      Method:<br>
-      <select name="method">
-        <option value="get">GET</option>
-        <option value="post">POST</option>
-        <option value="put">PUT</option>
-        <option value="patch">PATCH</option>
-        <option value="delete">DELETE</option>
-      </select>
-      <br>
-      URL:<br>
-      <input type="text" name="url" value="http://0.0.0.0:3000/">
-      <br>
-      Data type:<br>
-      <select name="data-type">
-        <option value="json">JSON</option>
-        <option value="jsonp">JSONP</option>
-        <option value="xml">XML</option>
-        <option value="html">HTML</option>
-        <option value="script">Script</option>
-        <option value="text">Text</option>
-      </select>
-      <br>
-      Headers:<br>
-      <input type="text" name="header-name-1">:<input type="text" name="header-value-1"><br>
-      <input type="text" name="header-name-2">:<input type="text" name="header-value-2"><br>
-      <input type="text" name="header-name-3">:<input type="text" name="header-value-3"><br>
-      <input type="text" name="header-name-4">:<input type="text" name="header-value-4"><br>
-      <input type="text" name="header-name-5">:<input type="text" name="header-value-5"><br>
-      <br>
-      Data:<br>
-      <textarea name="data"></textarea>
-      <br><br>
-      <input type="submit" value="Send">
-    </form>
-    <div id="response"></div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Web REST Client</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div id="content">
+
+        <form id="requestForm">
+          <div class="form-group">
+            <label for="methodSelect">Method</label>
+            <select class="form-control" id="methodSelect">
+              <option value="get">GET</option>
+              <option value="post">POST</option>
+              <option value="put">PUT</option>
+              <option value="patch">PATCH</option>
+              <option value="delete">DELETE</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="urlInput">URL</label>
+            <input type="url" class="form-control" id="urlInput" placeholder="http://0.0.0.0:3000">
+          </div>
+          <div class="form-group">
+            <label for="dataTypeSelect">Data type</label>
+            <select class="form-control" id="dataTypeSelect">
+              <option value="json">JSON</option>
+              <option value="jsonp">JSONP</option>
+              <option value="xml">XML</option>
+              <option value="html">HTML</option>
+              <option value="script">Script</option>
+              <option value="text">Text</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="urlInput" class="col-md-12">Headers</label>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerNameInput1" placeholder="Authorization">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerValueInput1" placeholder="Bearer 123456789">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerNameInput2" placeholder="Authorization">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerValueInput2" placeholder="Bearer 123456789">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerNameInput3" placeholder="Authorization">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control col-md-6" id="headerValueInput3" placeholder="Bearer 123456789">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dataTextArea">Data</label>
+            <textarea class="form-control" id="dataTextArea" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div id="response"></div>
+
+      </div>
+    </div>
+
   </body>
 
 </html>
