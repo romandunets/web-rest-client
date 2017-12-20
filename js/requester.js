@@ -37,4 +37,33 @@ $(document).ready(function() {
       });
   });
 
+  $('#addHeaderButton').click(function() {
+    var headerNameInput = $("<input>")
+      .attr('type', 'text')
+      .attr('placeholder', 'Authorization')
+      .attr('id', 'headerNameInput15')
+      .attr('class', 'form-control col-md-6');
+
+    var headerNameFormGroup = $("<div></div>")
+      .attr('class', 'form-group col-md-6')
+      .append(headerNameInput);
+
+    var headerValueInput = $("<input>")
+      .attr('type', 'text')
+      .attr('placeholder', 'Bearer XYZ')
+      .attr('id', 'headerValueInput15')
+      .attr('class', 'form-control col-md-6');
+    var headerValueFormGroup = $("<div></div>")
+      .attr('class', 'form-group col-md-6')
+      .append(headerValueInput);
+
+    var headerFormGroup = $("<div></div>")
+      .attr('class', 'form-row')
+      .append(headerNameFormGroup)
+      .append(headerValueFormGroup);
+      console.log(headerFormGroup);
+
+    $('#addHeaderButton').closest('.form-row').before(headerFormGroup);
+  });
+
 });
