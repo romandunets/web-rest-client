@@ -33,9 +33,14 @@ $(document).ready(function() {
       })
       .done(function(response) {
         $("#response").text(JSON.stringify(response));
+        $("#responseStatus").text('200 OK');
       })
-      .fail(function(jqXHR, textStatus) {
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
         $("#response").text('Error: ' + textStatus);
+        $("#responseStatus").text(jqXHR.status + ' ' + jqXHR.statusText);
       });
   });
 
