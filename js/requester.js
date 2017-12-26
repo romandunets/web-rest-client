@@ -12,7 +12,9 @@ $(document).ready(function() {
     var jsonData = data !== "" ? $.parseJSON(data) : {};
 
     var headers = {};
-    for (var i = 1; i <= 3; i++) {
+    var headersCounter = parseInt($('#headersCounter').val());
+
+    for (var i = 1; i <= headersCounter; i++) {
       var headerName = requestForm.find('#headerNameInput' + i).val();
       var headerValue = requestForm.find('#headerValueInput' + i).val();
       if (headerName !== "" && headerValue !== "") {
@@ -38,10 +40,13 @@ $(document).ready(function() {
   });
 
   $('#addHeaderButton').click(function() {
+    var headersCounter = parseInt($('#headersCounter').val());
+    headersCounter++;
+
     var headerNameInput = $("<input>")
       .attr('type', 'text')
       .attr('placeholder', 'Authorization')
-      .attr('id', 'headerNameInput15')
+      .attr('id', 'headerNameInput' + headersCounter)
       .attr('class', 'form-control col-md-6');
 
     var headerNameFormGroup = $("<div></div>")
@@ -51,7 +56,7 @@ $(document).ready(function() {
     var headerValueInput = $("<input>")
       .attr('type', 'text')
       .attr('placeholder', 'Bearer XYZ')
-      .attr('id', 'headerValueInput15')
+      .attr('id', 'headerValueInput' + headersCounter)
       .attr('class', 'form-control col-md-6');
     var headerValueFormGroup = $("<div></div>")
       .attr('class', 'form-group col-md-6')
@@ -64,6 +69,7 @@ $(document).ready(function() {
       console.log(headerFormGroup);
 
     $('#addHeaderButton').closest('.form-row').before(headerFormGroup);
+    $('#headersCounter').val(headersCounter);
   });
 
 });
