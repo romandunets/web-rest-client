@@ -8,7 +8,6 @@ $(document).ready(function() {
     var url = requestForm.find('#urlInput').val();
     var dataType = requestForm.find('#dataTypeSelect').val();
     var data = requestForm.find('#dataTextArea').val();
-    console.log(data);
     var jsonData = data !== "" ? $.parseJSON(data) : {};
 
     var headers = {};
@@ -32,7 +31,10 @@ $(document).ready(function() {
         headers: headers
       })
       .done(function(response) {
-        $("#response").text(JSON.stringify(response));
+        var prettifiedJSON = JSON.stringify(response, undefined, 4)
+          .replace(/\n/g,'<br/>')
+          .replace(/\s/g,'&nbsp;');
+        $("#response").html(prettifiedJSON);
         $("#responseStatus").text('200 OK');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
