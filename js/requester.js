@@ -31,14 +31,11 @@ $(document).ready(function() {
         headers: headers
       })
       .done(function(response) {
-        var prettifiedJSON = JSON.stringify(response, undefined, 4)
-          .replace(/\n/g,'<br/>')
-          .replace(/\s/g,'&nbsp;');
-        $("#response").html(prettifiedJSON);
+        $("#response").html(prettifyJSON(response));
         $("#responseStatus").text('200 OK');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
-        $("#response").text(jqXHR.responseText);
+        $("#response").html(prettifyJSON(JSON.parse(jqXHR.responseText)));
         $("#responseStatus").text(jqXHR.status + ' ' + jqXHR.statusText);
       });
   });
@@ -75,5 +72,11 @@ $(document).ready(function() {
     $('#addHeaderButton').closest('.form-row').before(headerFormGroup);
     $('#headersCounter').val(headersCounter);
   });
+
+  function prettifyJSON(json) {
+    return JSON.stringify(json, undefined, 4)
+      .replace(/\n/g,'<br/>')
+      .replace(/\s/g,'&nbsp;');
+  }
 
 });
