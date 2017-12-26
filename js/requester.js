@@ -36,10 +36,7 @@ $(document).ready(function() {
         $("#responseStatus").text('200 OK');
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-        console.log(textStatus);
-        console.log(errorThrown);
-        $("#response").text('Error: ' + textStatus);
+        $("#response").text(jqXHR.responseText);
         $("#responseStatus").text(jqXHR.status + ' ' + jqXHR.statusText);
       });
   });
