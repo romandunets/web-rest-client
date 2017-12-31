@@ -6,7 +6,6 @@ $(document).ready(function() {
     var requestForm = $('#requestForm');
     var method = requestForm.find('#methodSelect').val();
     var url = requestForm.find('#urlInput').val();
-    var dataType = requestForm.find('#dataTypeSelect').val();
     var data = requestForm.find('#dataTextArea').val();
     var jsonData = data !== "" ? $.parseJSON(data) : {};
 
@@ -27,7 +26,6 @@ $(document).ready(function() {
         type: method,
         url: url,
         data: jsonData,
-        dataType: dataType,
         headers: headers
       })
       .done(function(response) {

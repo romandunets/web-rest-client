@@ -46,42 +46,33 @@
 
     <div class="container">
       <div id="content">
-        <div class="page-header">
-          <h1>Request</h1>
-        </div>
 
         <form id="requestForm">
-          <div class="form-group">
-            <label for="methodSelect">Method</label>
-            <select class="form-control" id="methodSelect">
-              <option value="get">GET</option>
-              <option value="post">POST</option>
-              <option value="put">PUT</option>
-              <option value="patch">PATCH</option>
-              <option value="delete">DELETE</option>
-            </select>
+          <div class="row">
+            <div class="col-md-2">
+              <select class="form-control" id="methodSelect">
+                <option value="get">GET</option>
+                <option value="post">POST</option>
+                <option value="put">PUT</option>
+                <option value="patch">PATCH</option>
+                <option value="delete">DELETE</option>
+              </select>
+            </div>
+            <div class="col-md-9">
+              <input type="url" class="form-control" id="urlInput" placeholder="http://0.0.0.0:3000">
+            </div>
+            <div class="col-md-1">
+              <button type="submit" class="btn btn-primary full-width">Send</button>
+            </div>
           </div>
           <div class="form-group">
-            <label for="urlInput">URL</label>
-            <input type="url" class="form-control" id="urlInput" placeholder="http://0.0.0.0:3000">
-          </div>
-          <div class="form-group">
-            <label for="dataTypeSelect">Data type</label>
-            <select class="form-control" id="dataTypeSelect">
-              <option value="json">JSON</option>
-              <option value="jsonp">JSONP</option>
-              <option value="xml">XML</option>
-              <option value="html">HTML</option>
-              <option value="script">Script</option>
-              <option value="text">Text</option>
-            </select>
-          </div>
-          <div id="headerContainer" class="form-group">
-            <label for="urlInput" class="multi-label col-md-12">Headers</label>
-            <input type="hidden" id="headersCounter" value="0">
-            <div class="form-row">
-              <div class="form-group col-md-12">
-                <button type="button" id="addHeaderButton" class="btn btn-primary btn-sm">+ Add header</button>
+            <div id="headerContainer" class="form-group">
+              <label for="urlInput" class="multi-label col-md-12">Headers</label>
+              <input type="hidden" id="headersCounter" value="0">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <button type="button" id="addHeaderButton" class="btn btn-primary btn-sm">+ Add header</button>
+                </div>
               </div>
             </div>
           </div>
@@ -89,7 +80,6 @@
             <label for="dataTextArea">Data</label>
             <textarea class="form-control" id="dataTextArea" rows="3"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Send</button>
         </form>
 
       </div>
@@ -97,7 +87,6 @@
 
     <div class="container">
       <div class="page-header">
-        <h1>Response</h1>
         <h3 id="responseStatus"></h3>
       </div>
       <div id="response"></div>
